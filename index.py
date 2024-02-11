@@ -215,5 +215,5 @@ with st.expander("Heat Map"):
             st.write("")
 
 
-st.markdown("<div style='text-align: center; color: #D04848; font-size: 14px; margin-top: 50px'>©Vizit 2024</div>", unsafe_allow_html=True)
+st.markdown("<div style='text-align: center; color: #D04848; font-size: 14px; margin-top: 50px'>©VizIt 2024</div>", unsafe_allow_html=True)
 
