@@ -60,6 +60,7 @@ with st.expander("Bar Plot"):
         else:
             sns.barplot(x=x_values, y=y_values, data=df)
         st.pyplot(fig)
+        plt.close(fig)
 
 with st.expander("Line Plot"):
     col15, col16 = st.columns([0.25, 0.75])
@@ -74,6 +75,7 @@ with st.expander("Line Plot"):
             sns.lineplot(x=x_values, y=y_values, data=df, hue=c_axis, style=style, palette='pastel')
         else:
             sns.lineplot(x=x_values, y=y_values, data=df, style=style, )
+        plt.close(fig)
         st.pyplot(fig)
 
 with st.expander("Scatter Plot"):
@@ -89,6 +91,7 @@ with st.expander("Scatter Plot"):
             sns.scatterplot(x=x_values, y=y_values, data=df, hue=c_axis, palette='pastel', style=style)
         else:
             sns.scatterplot(x=x_values, y=y_values, data=df, style=style)
+        plt.close(fig)
         st.pyplot(fig)
 
 with st.expander("Histogram"):
@@ -104,6 +107,7 @@ with st.expander("Histogram"):
         else:
             sns.histplot(x=x_values, data=df, kde=kde)
 
+        plt.close(fig)
         st.pyplot(fig)
 
 with st.expander("Pie Chart"):
@@ -116,6 +120,8 @@ with st.expander("Pie Chart"):
             fig, ax = plt.subplots()
             plt.pie(df[pie_column].value_counts(), labels=df[pie_column].unique(), autopct='%1.1f%%', colors=pastel_colors)
             st.pyplot(fig)
+            plt.close(fig)
+
         except:
             st.write("")
 
@@ -133,6 +139,8 @@ with st.expander("Box Plot"):
         else:
             sns.boxplot(x=x_values, y=y_values, data=df, orient=orient)
         st.pyplot(fig)
+        plt.close(fig)
+
 
 with st.expander("Point Plot"):
     col11, col12 = st.columns([0.25, 0.75])
@@ -147,6 +155,8 @@ with st.expander("Point Plot"):
         else:
             sns.pointplot(x=x_values, y=y_values, data=df)
         st.pyplot(fig)
+        plt.close(fig)
+
 
 
 with st.expander("Density Plot"):
@@ -159,6 +169,8 @@ with st.expander("Density Plot"):
             fig, ax = plt.subplots()
             sns.kdeplot(df[x_values], fill=shade)
             st.pyplot(fig)
+            plt.close(fig)
+
         except:
             st.write("")
 
@@ -178,6 +190,8 @@ with st.expander("Swarm Plot"):
             sns.swarmplot(x=x_values, y=y_values, data=df, orient=orient)
 
         st.pyplot(fig)
+        plt.close(fig)
+
 
 
 
@@ -195,6 +209,8 @@ with st.expander("Violin Plot"):
         else:
             sns.violinplot(x=x_values, y=y_values, data=df, orient=orient)
         st.pyplot(fig)
+        plt.close(fig)
+
 
 
 with st.expander("KDE Plot"):
@@ -211,6 +227,8 @@ with st.expander("KDE Plot"):
         else:
             sns.violinplot(x=x_values, y=y_values, data=df, orient=orient)
         st.pyplot(fig)
+        plt.close(fig)
+
 
 
 
@@ -225,6 +243,8 @@ with st.expander("Correlation Plot"):
             sns.heatmap(df.select_dtypes(include='number').corr(),
                 cmap=sns.cubehelix_palette(20, light=0.95, dark=0.45))
             st.pyplot(fig)
+            plt.close(fig)
+
         except:
             st.write("")
 
@@ -238,6 +258,8 @@ with st.expander("Heat Map"):
             fig, ax = plt.subplots()
             sns.heatmap(df.select_dtypes(['float', 'int']), cmap=sns.cubehelix_palette(20, light=0.69, dark=0.25))
             st.pyplot(fig)
+            plt.close(fig)
+
         except:
             st.write("")
 
