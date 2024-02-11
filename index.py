@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+from animation import animation
+
 st.set_page_config(
     page_title="VizIt",
     page_icon="📈",
@@ -11,6 +13,20 @@ st.set_page_config(
 
 
 st.markdown("<h1 style='text-align: center; color: #D04848; font-size: 60px'>VizIt</h1>", unsafe_allow_html=True)
+
+
+
+st.markdown(animation,unsafe_allow_html=True)
+
+
+uploader_style = """
+<style>
+.st-emotion-cache-1erivf3 {
+    background: #D04848;
+}
+</style>
+"""
+st.markdown(uploader_style, unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader(label="Choose a CSV file", type=["csv"])
 
@@ -199,4 +215,5 @@ with st.expander("Heat Map"):
             st.write("")
 
 
+st.markdown("<div style='text-align: center; color: #D04848; font-size: 14px; margin-top: 50px'>©Vizit 2024</div>", unsafe_allow_html=True)
 
