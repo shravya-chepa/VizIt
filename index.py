@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-from mitosheet.streamlit.v1 import spreadsheet
 import matplotlib.pyplot as plt
 import seaborn as sns
 
