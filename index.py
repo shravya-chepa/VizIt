@@ -52,10 +52,13 @@ with st.expander("Bar Plot"):
         x_values = st.selectbox('X axis:', options=numeric_columns, index=0, key=3)
         y_values = st.selectbox('Y axis:', options=numeric_columns, index=1, key=4)
         c_axis = st.selectbox('Color: ', options=categorical_columns, key=34-1)
-        
+
     with col4:
         fig, ax = plt.subplots()
-        sns.barplot(x=x_values, y=y_values, data=df, palette='pastel', hue=c_axis)
+        if c_axis is not None:
+            sns.barplot(x=x_values, y=y_values, data=df, palette='pastel', hue=c_axis)
+        else:
+            sns.barplot(x=x_values, y=y_values, data=df)
         st.pyplot(fig)
 
 with st.expander("Line Plot"):
@@ -65,11 +68,12 @@ with st.expander("Line Plot"):
         y_values = st.selectbox('Y axis:', options=numeric_columns, index=1, key=16)
         c_axis = st.selectbox('Color: ', options=categorical_columns, key=1516-1)
         style = st.selectbox('Style: ', options=categorical_columns, key=1516-2)
-        print("x: ", type(x_values), x_values)
-        print("y: ", type(y_values), y_values)
     with col16:
         fig, ax = plt.subplots()
-        sns.lineplot(x=x_values, y=y_values, data=df, hue=c_axis, style=style, palette='pastel')
+        if c_axis is not None:
+            sns.lineplot(x=x_values, y=y_values, data=df, hue=c_axis, style=style, palette='pastel')
+        else:
+            sns.lineplot(x=x_values, y=y_values, data=df, style=style, )
         st.pyplot(fig)
 
 with st.expander("Scatter Plot"):
@@ -81,7 +85,10 @@ with st.expander("Scatter Plot"):
         style = st.selectbox('Style: ', options=categorical_columns)
     with col2:
         fig, ax = plt.subplots()
-        sns.scatterplot(x=x_values, y=y_values, data=df, hue=c_axis, palette='pastel', style=style)
+        if c_axis is not None:
+            sns.scatterplot(x=x_values, y=y_values, data=df, hue=c_axis, palette='pastel', style=style)
+        else:
+            sns.scatterplot(x=x_values, y=y_values, data=df, style=style)
         st.pyplot(fig)
 
 with st.expander("Histogram"):
@@ -92,7 +99,11 @@ with st.expander("Histogram"):
         c_axis = st.selectbox('Color: ', options=categorical_columns, key=2324-2)
     with col24:
         fig, ax = plt.subplots()
-        sns.histplot(x=x_values, data=df, kde=kde, hue=c_axis, palette='pastel')
+        if c_axis is not None:
+            sns.histplot(x=x_values, data=df, kde=kde, hue=c_axis, palette='pastel')
+        else:
+            sns.histplot(x=x_values, data=df, kde=kde)
+
         st.pyplot(fig)
 
 with st.expander("Pie Chart"):
@@ -117,7 +128,10 @@ with st.expander("Box Plot"):
         orient = st.selectbox('Orientation: ', options=['v', 'h'], key=78-2)
     with col8:
         fig, ax = plt.subplots()
-        sns.boxplot(x=x_values, y=y_values, data=df, palette='pastel', hue=c_axis, orient=orient)
+        if c_axis is not None:
+            sns.boxplot(x=x_values, y=y_values, data=df, palette='pastel', hue=c_axis, orient=orient)
+        else:
+            sns.boxplot(x=x_values, y=y_values, data=df, orient=orient)
         st.pyplot(fig)
 
 with st.expander("Point Plot"):
@@ -128,7 +142,10 @@ with st.expander("Point Plot"):
         c_axis = st.selectbox('Color: ', options=categorical_columns, key=1112-1)
     with col12:
         fig, ax = plt.subplots()
-        sns.pointplot(x=x_values, y=y_values, data=df, hue=c_axis, palette='pastel')
+        if c_axis is not None:
+            sns.pointplot(x=x_values, y=y_values, data=df, hue=c_axis, palette='pastel')
+        else:
+            sns.pointplot(x=x_values, y=y_values, data=df)
         st.pyplot(fig)
 
 
@@ -140,7 +157,7 @@ with st.expander("Density Plot"):
     with col26:
         try:
             fig, ax = plt.subplots()
-            sns.kdeplot(df[x_values], shade=shade, palette='pastel')
+            sns.kdeplot(df[x_values], fill=shade)
             st.pyplot(fig)
         except:
             st.write("")
@@ -155,7 +172,11 @@ with st.expander("Swarm Plot"):
         orient = st.selectbox('Orientation: ', options=['v', 'h'], key=56-2)
     with col6:
         fig, ax = plt.subplots()
-        sns.swarmplot(x=x_values, y=y_values, data=df, hue=c_axis, orient=orient, palette='pastel')
+        if c_axis is not None:
+            sns.swarmplot(x=x_values, y=y_values, data=df, hue=c_axis, orient=orient, palette='pastel')
+        else:
+            sns.swarmplot(x=x_values, y=y_values, data=df, orient=orient)
+
         st.pyplot(fig)
 
 
@@ -169,7 +190,10 @@ with st.expander("Violin Plot"):
         orient = st.selectbox('Orientation: ', options=['v', 'h'], key=910-2)
     with col10:
         fig, ax = plt.subplots()
-        sns.violinplot(x=x_values, y=y_values, data=df, hue=c_axis, orient=orient, palette='pastel')
+        if c_axis is not None:
+            sns.violinplot(x=x_values, y=y_values, data=df, hue=c_axis, orient=orient, palette='pastel')
+        else:
+            sns.violinplot(x=x_values, y=y_values, data=df, orient=orient)
         st.pyplot(fig)
 
 
@@ -182,7 +206,10 @@ with st.expander("KDE Plot"):
         fill = st.selectbox('Fill: ', options=[True, False], key=1314-2)
     with col14:
         fig, ax = plt.subplots()
-        sns.kdeplot(x=x_values, y=y_values, data=df, hue=c_axis, fill=fill, palette='pastel')
+        if c_axis is not None:
+            sns.kdeplot(x=x_values, y=y_values, data=df, hue=c_axis, fill=fill, palette='pastel')
+        else:
+            sns.violinplot(x=x_values, y=y_values, data=df, orient=orient)
         st.pyplot(fig)
 
 
