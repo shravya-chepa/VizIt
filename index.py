@@ -49,6 +49,8 @@ with st.expander("Line Plot"):
         y_values = st.selectbox('Y axis:', options=numeric_columns, index=1, key=16)
         c_axis = st.selectbox('Color: ', options=categorical_columns, key=1516-1)
         style = st.selectbox('Style: ', options=categorical_columns, key=1516-2)
+        print("x: ", type(x_values), x_values)
+        print("y: ", type(y_values), y_values)
     with col16:
         fig, ax = plt.subplots()
         sns.lineplot(x=x_values, y=y_values, data=df, hue=c_axis, style=style, palette='pastel')
