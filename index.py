@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import os
 import plotly.express as px
 import plotly.graph_objs as go
 from sklearn.model_selection import train_test_split 
@@ -83,7 +82,6 @@ try:
 
         st.header("1. Structure")
         st.subheader("How big is the file")
-        # print("file is",  os.path.getsize("path/filename.csv") / 1e6, "MB")
         bytes_data = uploaded_file.getvalue()
         file_size_MB = round(len(bytes_data) / (1024 * 1024), 6)
         st.write(str(file_size_MB) + "MB")
