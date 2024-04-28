@@ -2,3 +2,10 @@ pandas
 streamlit
 matplotlib
 seaborn
+numpy
+os
+plotly.express
+plotly.graph_objs
+sklearn.model_selection
+sklearn.linear_model
+sklearn.metrics
